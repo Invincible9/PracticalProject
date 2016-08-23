@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+}
+
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    list-style-type: none;
+    /*margin: 0;*/
+    //padding: 0;
+    overflow: hidden;
+    background-color: #0280D7;
+    border-radius: 5px;
+    margin-left: 100px;
+    margin-right: 100px; margin-left: 100px;
+    margin-right: 100px;
+
+
+}
+
+/*ul.topnav li img{*/
+    /*width: 100px;*/
+    /*height: 30px;*/
+/*}*/
+
+.font{
+    background-color: black;
+}
+
+.font1{
+    background-color: black;
+}
+
+.picture{
+    margin-width: 100px;
+    margin-left: 100px;
+    /*margin-bottom: 10px;*/
+}
+
+.picture img{
+    width: 100px;
+    height: 40px;
+}
+
+/* Float the list items side by side */
+ul.topnav li {float: left;}
+
+ul.topnav-right li{
+    float: right;
+}
+
+/* Style the links inside the list items */
+ul.topnav li a {
+    display: inline-block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.topnav li a:hover {
+    background-color: #2aabd2;
+}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav li.icon {display: none;}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+    ul.topnav li:not(:first-child) {display: none;}
+    ul.topnav li.icon {
+        float: right;
+        display: inline-block;
+    }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width:680px) {
+    ul.topnav.responsive {position: relative;}
+    ul.topnav.responsive li.icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    ul.topnav.responsive li {
+        float: none;
+        display: inline;
+    }
+    ul.topnav.responsive li a {
+        /*display: block;*/
+        text-align: left;
+    }
+
+}
+
+/*Screen resolution form-group*/
+
+
+.btn-primary{
+    width: 150px;
+}
+
+.form-group{
+    width: 350px
+}
+@media only screen and (max-width: 1024px){
+    .form-group{width: 350px}
+    .btn-primary{width: 150px}
+}
+
+@media only screen and (max-width: 960px){
+    .form-group{width: 360px}
+    .btn-primary{width: 150px}
+}
+
+@media only screen and (max-width: 480px){
+    .form-group{display: block; width: 95%}
+    .btn-primary{width: 95%}
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+    float: right;
+}
+
+.chip img {
+    background: url(../images/SoftUni-logo.png) no-repeat;
+    size: 15px;
+    max-width: 100px;
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/*from style 1*/
+table th, table td {
+    background: #DDD;
+    padding: 5px;
+}
+
+ul#messages li {
+    display: block;
+    width: 80%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+ul#messages li.info {
+    background: #7f7;
+}
+
+ul#messages li.error {
+    background: #d00;
+    color: white;
+}
+
+.validation-error {
+    vertical-align: bottom;
+    margin-left: 10px;
+    color: red;
+}
+
+#logged-in-info {
+    float: right;
+    margin-top: 18px;
+}
+
+#logged-in-info form {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+body>aside {
+    float: right;
+    width: 200px;
+    background: #CCC;
+    padding: 15px;
+    margin: 0 30px;
+}
+
+body>aside h2 {
+    margin: 5px 0 15px 0;
+}
+
+body>aside a {
+    display: block;
+    margin: 5px 0;
+    text-decoration: none;
+}
+
+body>aside a:hover {
+    color: blue;
+}
+
+body>main:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.greeting{
+    margin: 10px 0;
+    float: right;
+    color: white;
+    text-decoration: white;
+}
+
+.buttonLogOut{
+    /*margin: 10px 0;*/
+    padding: 0 10px;
+    float: right;
+    margin-left: 150px;
+}
+
+.buttonLogOut:hover{
+    color: blue;
+}
+
+.buttonStyle{
+    border: 1px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: -155px;
+    margin-top: 5px;
+}
+
+.buttonStyle:hover{
+    background-color: blue;
+}
+
+hr{
+    width: 95%;
+    size: 3px;
+    margin: 10px;
+    padding: 10px;
+
+}
+
+body>footer {
+    background: url(../content/images/templatemo_footer_bg.jpg) repeat-y;
+    max-width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+    text-align: center;
+    text-decoration-color: white;
+}
+
+.createNewPost{
+    margin-left: 43px;
+}
