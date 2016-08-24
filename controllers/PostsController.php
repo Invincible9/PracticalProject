@@ -77,7 +77,7 @@ class PostsController extends BaseController
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['username'];
+            $username = $_POST['full_name'];
             $user_id = $this->model->getUserByUsername($username);
             if($user_id <= 0 || $user_id > 1000000){
                 $this->setValidationError("user_id", "Invalid author user ID!");

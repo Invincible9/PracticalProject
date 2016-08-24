@@ -2,7 +2,6 @@
 <html>
 
 <head>
-<!--    <link rel="stylesheet" href="--><?//=APP_ROOT?><!--/content/styles.css" />-->
 
     <link rel="stylesheet" href="<?=APP_ROOT?>/content/style1.css" />
     <link rel="stylesheet" href="<?=APP_ROOT?>/content/bootstrap.css" />
@@ -38,10 +37,16 @@
         <div class="font1">
         <ul class="topnav" id="myTopnav">
             <li><a href="<?=APP_ROOT?>/">Home</a></li>
-            <?php if ($this->isLoggedIn) { ?>
-                <li><a href="<?=APP_ROOT?>/posts">Posts</a></li>
-                <li><a href="<?=APP_ROOT?>/posts/create">Create Post</a></li>
-                <li><a href="<?=APP_ROOT?>/users">Users</a></li>
+            <?php if ($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
+                <li><a href="<?=APP_ROOT?>/posts/myposts" >MyPosts</a></li>
+                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
+
+
+            <?php } else if ($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
+                <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
+                <li><a href = "--><?=APP_ROOT?>/users" > Users</a ></li >
+                <li><a href = "--><?=APP_ROOT?>/users" > Register</a ></li >
+
             <?php } else { ?>
                 <li><a href="<?=APP_ROOT?>/users/login">Login</a></li>
                 <li><a href="<?=APP_ROOT?>/users/register">Register</a></li>

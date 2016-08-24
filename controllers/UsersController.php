@@ -51,11 +51,21 @@ class UsersController extends BaseController
 
             $userId = $this->model->login($username, $password);
 
-            if($userId !== false) {
+            if($userId !== false)  {
+                $isAdmin = $this->model->loginAdmin($userId);
+                $_SESSION['isAdmin'] = $isAdmin;
                 $_SESSION['username'] = $username;
                 $_SESSION['user_id'] = $userId;
-                $this->addInfoMessage("Login successful.");
-                $this->redirect("");
+//                $this->addInfoMessage("Login successful.");
+//                $this->redirect("");
+                if($isAdmin){
+                    $this->addInfoMessage("Login successful.");
+                    $this->redirect("");
+                }else{
+                    $this->addInfoMessage("Login successful.");
+                    $this->redirect("");
+
+                }
             }else{
                 $this->addErrorMessage("Error: Login Failed");
             }
@@ -88,7 +98,7 @@ class UsersController extends BaseController
                 if ($userId !== false) {
                     $_SESSION['username'] = $username;
                     $_SESSION['user_id'] = $userId;
-                    $this->addInfoMessage("Registration successful. ");
+                    $this->addInfoMessage("Registratiown successful. ");
                     $this->redirect("");
                 } else {
                     $this->addErrorMessage("Error: registration failed.");
