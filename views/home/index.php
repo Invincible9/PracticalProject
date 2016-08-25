@@ -13,7 +13,6 @@
 </aside>
 
 <main>
-    <?php var_dump($_SESSION['isAdmin']) ?>
     <?php foreach ($this->posts as $post) : ?>
      <h1><?= htmlspecialchars($post['title'])?></h1>
         <p>

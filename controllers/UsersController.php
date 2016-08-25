@@ -65,7 +65,6 @@ class UsersController extends BaseController
                 $this->addInfoMessage("Login successful.");
                 $this->redirect("");
 
-
         } else {
             $this->addErrorMessage("Error: Login Failed");
         }

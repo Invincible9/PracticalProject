@@ -27,7 +27,7 @@ class PostsController extends BaseController
                 $userId = $_SESSION['user_id'];
                 if($this->model->create($title, $content, $userId)){
                     $this->addInfoMessage("Post created");
-                    $this->redirect("posts");
+                    $this->redirect("myposts");
                 }else{
                     $this->addErrorMessage("Error: cannot create post.");
                 }
