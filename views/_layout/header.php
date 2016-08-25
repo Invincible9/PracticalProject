@@ -33,19 +33,18 @@
                 <?php } ?>
         </div>
     </div>
-
         <div class="font1">
         <ul class="topnav" id="myTopnav">
             <li><a href="<?=APP_ROOT?>/">Home</a></li>
-            <?php if ($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
-                <li><a href="<?=APP_ROOT?>/posts/myposts" >MyPosts</a></li>
-                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
 
+            <?php if ($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
+                <li><a href="<?=APP_ROOT?>/users/myposts" >MyPosts</a></li>
+                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
 
             <?php } else if ($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                 <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
-                <li><a href = "--><?=APP_ROOT?>/users" > Users</a ></li >
-                <li><a href = "--><?=APP_ROOT?>/users" > Register</a ></li >
+                <li><a href = "<?=APP_ROOT?>/admins" > Users</a ></li >
+                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
 
             <?php } else { ?>
                 <li><a href="<?=APP_ROOT?>/users/login">Login</a></li>

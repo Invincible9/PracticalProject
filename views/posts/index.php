@@ -1,5 +1,4 @@
 <main>
-
     <div class="container">
         <table class="table table-condensed">
             <tr>

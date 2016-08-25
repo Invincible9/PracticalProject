@@ -10,14 +10,16 @@ class UsersModel extends BaseModel
     }
 
     //function all posts by user
-    function getAllPostsById($id){
-        $statement = self::$db->query(
+    function getAllPostsById(){
+        $statement = self::$db->prepare(
             "SELECT title, content, date FROM posts JOIN users " .
             "ON posts.user_id = users.id WHERE users.id = ?");
+        $id = $_SESSION['user_id'];
         $statement->bind_param("i", $id);
         $statement->execute();
-        $result = $statement->get_result()->fetch_assoc();
+        $result = $statement->get_result()->fetch_all();
         return $result;
+
     }
 
     public function getById(int $id)
@@ -42,15 +44,15 @@ class UsersModel extends BaseModel
 
     public function register(string $username, string $password, string $full_name){
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
+        $isAdmin = 1;
         $statement = self::$db->prepare(
-            "INSERT INTO users (username, password_hash, full_name) VALUES (?,?,?)");
-        $statement->bind_param("sss", $username, $password_hash, $full_name);
+            "INSERT INTO users (username, password_hash, full_name, isAdmin) VALUES (?,?,?,?)");
+        $statement->bind_param("sssi", $username, $password_hash, $full_name, $isAdmin);
         $statement->execute();
         if($statement->affected_rows != 1)
             return false;
         $user_id = self::$db->query("SELECT LAST_INSERT_ID()")->fetch_row()[0];
         return $user_id;
-
     }
 
     public function loginAdmin(int $id){

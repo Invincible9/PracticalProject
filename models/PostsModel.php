@@ -5,9 +5,9 @@ class PostsModel extends HomeModel
     function getALL()
     {
         $statement = self::$db->query(
-            "SELECT posts.id, title, content, date, full_name, user_id " .
-            "FROM posts LEFT JOIN users On posts.user_id = users.id " .
-            "ORDER By date DESC");
+         "SELECT posts.id, title, content, date, full_name, user_id " .
+        "FROM posts LEFT JOIN users On posts.user_id = users.id " .
+        "ORDER By date DESC");
 
     return $statement->fetch_all(MYSQLI_ASSOC);
     }
