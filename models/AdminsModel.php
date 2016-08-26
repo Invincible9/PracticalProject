@@ -1,24 +1,25 @@
 <?php
 
-class UsersModel extends BaseModel
+class AdminsModel extends BaseModel
 {
-    function getALL()
+    function getAllUsers()
     {
         $statement = self::$db->query(
-            "SELECT * FROM  users ORDER BY username");
+            "SELECT * FROM users ORDER BY username");
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 
-    //function all posts by user
-//    function getAllPostsById($id){
-//        $statement = self::$db->query(
-//            "SELECT title, content, date FROM posts JOIN users " .
-//            "ON posts.user_id = users.id WHERE users.id = ?");
-//        $statement->bind_param("i", $id);
-//        $statement->execute();
-//        $result = $statement->get_result()->fetch_assoc();
-//        return $result;
-//    }
+    function getAllPostsById(){
+        $statement = self::$db->prepare(
+            "SELECT posts.id, title, content, date FROM posts JOIN users " .
+            "ON posts.user_id = users.id WHERE users.id = ?");
+        $id = $_SESSION['user_id'];
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+        $_SESSION['result'] = $result;
+        return $result;
+    }
 
     public function getById(int $id)
     {
@@ -26,21 +27,19 @@ class UsersModel extends BaseModel
             "SELECT * FROM users WHERE id= ?");
         $statement->bind_param("i", $id);
         $statement->execute();
-        $result = $statement->get_result()->fetch_assoc();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
         return $result;
     }
 
-    public function edit(int $id, string $username, string $full_name) : bool
+    public function edit(int $id, string $username, string $full_name, int $isAdmin) : bool
     {
         $statement = self::$db->prepare("UPDATE users SET username = ?, " .
-            "full_name = ? WHERE id = ?");
-        $statement->bind_param("ssi", $username, $full_name, $id);
+            "full_name = ?, isAdmin = ? WHERE id = ?");
+        $statement->bind_param("ssii", $username, $full_name, $isAdmin, $id);
         $statement->execute();
+
         return $statement->affected_rows >= 0;
     }
-
-
-
 
 
 }

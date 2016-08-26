@@ -15,7 +15,7 @@
     </div>
 
     <div><button type="submit" class="btn btn-primary">Create</button>
-        <a href="<?=APP_ROOT?>/posts">[Cancel]</a></div>
+        <a href="<?=APP_ROOT?>/users/myposts/">[Cancel]</a></div>
       </div>
 
 </form>

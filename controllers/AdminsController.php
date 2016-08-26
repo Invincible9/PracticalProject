@@ -5,7 +5,13 @@ class AdminsController extends BaseController
     public function index()
     {
         $this->authorize();
-        $this->users = $this->model->getAll();
+        $this->admins = $this->model->getAllUsers();
+    }
+
+    public function myposts()
+    {
+        $id = $_SESSION['user_id'];
+        $this->posts = $this->model->getAllPostsById($id);
     }
 
     public function edit(int $id)
@@ -21,8 +27,10 @@ class AdminsController extends BaseController
                 $this->setValidationError("full_name", "FullName cannot be empty!");
             }
 
+            $check_isAdmin = isset($_POST['admin']) ? 1 : 0;
+
             if($this->formValid()){
-                if($this->model->edit($id, $username, $full_name)){
+                if($this->model->edit($id, $username, $full_name, $check_isAdmin)){
                     $this->addInfoMessage("User edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit user.");
@@ -33,13 +41,11 @@ class AdminsController extends BaseController
 
         //HTTP GET
         //Show "confirm delete" form
-        $user = $this->model->getById($id);
-        if(! $user){
+        $this->user = $this->model->getById($id);
+        if(!$this->user){
             $this->addErrorMessage("Error: post does not exist. ");
             $this->redirect("users");
         }
-        $this->user = $user;
-
     }
 
     public function logout()
@@ -47,6 +53,5 @@ class AdminsController extends BaseController
         session_destroy();
         $this->redirect("");
     }
-
 
 }

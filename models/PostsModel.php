@@ -20,7 +20,6 @@ class PostsModel extends HomeModel
         $statement->execute();
         $result = $statement->get_result()->fetch_assoc();
         return $result;
-
     }
 
     public function getUserByUsername(string $username)
@@ -62,9 +61,7 @@ class PostsModel extends HomeModel
             $statement->bind_param("sssii", $title, $content, $date, $user_id, $id);
             $statement->execute();
             return $statement->affected_rows >= 0;
-
         }
-
 
 }
 

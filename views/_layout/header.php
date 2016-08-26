@@ -37,14 +37,15 @@
         <ul class="topnav" id="myTopnav">
             <li><a href="<?=APP_ROOT?>/">Home</a></li>
 
-            <?php if ($this->isLoggedIn && (!$_SESSION['isAdmin'])) { ?>
+            <?php if ($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
                 <li><a href="<?=APP_ROOT?>/users/myposts" >MyPosts</a></li>
-                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
+                <li><a href="<?=APP_ROOT?>/posts/createUserPost" >Create Posts</a></li>
 
             <?php } else if ($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                 <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
                 <li><a href = "<?=APP_ROOT?>/admins" > Users</a ></li >
-                <li><a href="<?=APP_ROOT?>/posts/create" >Create Posts</a></li>
+                <li><a href = "<?=APP_ROOT?>/admins/myposts" > MyPosts</a ></li >
+                <li><a href="<?=APP_ROOT?>/posts/createAdminPost" >Create Posts</a></li>
 
             <?php } else { ?>
                 <li><a href="<?=APP_ROOT?>/users/login">Login</a></li>

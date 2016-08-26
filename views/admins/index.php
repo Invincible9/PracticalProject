@@ -11,17 +11,19 @@
                 <th>ID</th>
                 <th>Username</th>
                 <th>Full Name</th>
+                <th>IsAdmin</th>
                 <th>EDIT</th>
             </tr>
         </thead>
 
         <tbody>
-            <?php foreach ($this->users as $user) : ?>
+            <?php foreach ($this->admins as $user) : ?>
                 <tr>
                     <td><?= $user['id'] ?></td>
                     <td><?=htmlspecialchars($user['username']) ?></td>
                     <td><?=htmlspecialchars($user['full_name']) ?></td>
-                    <td><a href="<?=APP_ROOT?>/users/edit/<?= $user['id']?>">[EDIT]</a></td>
+                    <td><?=htmlspecialchars($user['isAdmin']) ?></td>
+                    <td><a href="<?=APP_ROOT?>/admins/edit/<?= $user['id']?>">[EDIT]</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

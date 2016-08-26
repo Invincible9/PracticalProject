@@ -14,8 +14,8 @@
         <td><?=htmlspecialchars($post['date']) ?></td>
 
         <td>
-            <a href="<?=APP_ROOT?>/posts/editUserPost/<?= htmlspecialchars($post['id'])?>">[EDIT]</a>
-            <a href="<?=APP_ROOT?>/posts/deleteUserPost/<?= htmlspecialchars($post['id'])?>">[DELETE]</a>
+            <a href="<?=APP_ROOT?>/posts/editAdminPost/<?= htmlspecialchars($post['id'])?>">[EDIT]</a>
+            <a href="<?=APP_ROOT?>/posts/deleteAdminPost/<?= htmlspecialchars($post['id'])?>">[DELETE]</a>
         </td>
     </tr>
 <?php endforeach; ?>
