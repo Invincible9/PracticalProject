@@ -1,4 +1,4 @@
-<?php $this->title = 'Edit Existing Post' ; ?>
+<?php $this->title = 'Edit Existing User' ; ?>
 
 <h1 style="margin: 30px"><?=htmlspecialchars($this->title)?></h1>
 

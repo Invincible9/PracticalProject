@@ -5,7 +5,8 @@
                 <th>Title</th>
                 <th>Content</th>
                 <th>Date</th>
-                <th>Actions</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
             </tr>
             <?php foreach ($this->posts as $post) : ?>
     <tr>
@@ -13,10 +14,8 @@
         <td><?=cutLongText($post['content']) ?></td>
         <td><?=htmlspecialchars($post['date']) ?></td>
 
-        <td>
-            <a href="<?=APP_ROOT?>/posts/editAdminPost/<?= htmlspecialchars($post['id'])?>">[EDIT]</a>
-            <a href="<?=APP_ROOT?>/posts/deleteAdminPost/<?= htmlspecialchars($post['id'])?>">[DELETE]</a>
-        </td>
+        <td><a href="<?=APP_ROOT?>/posts/editAdminPost/<?= htmlspecialchars($post['id'])?>">[EDIT]</a></td>
+        <td><a href="<?=APP_ROOT?>/posts/deleteAdminPost/<?= htmlspecialchars($post['id'])?>">[DELETE]</a></td>
     </tr>
 <?php endforeach; ?>
 </table>

@@ -19,7 +19,7 @@
             <i>Posted on</i>
             <?= htmlspecialchars($post['date'])?>
             <i>by</i>
-            <?= htmlspecialchars($post['full_name'])?>
+            <?= htmlspecialchars($post['username'])?>
         </p>
 
      <p><?=$post['content']?></p>

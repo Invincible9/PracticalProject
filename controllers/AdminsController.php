@@ -35,7 +35,7 @@ class AdminsController extends BaseController
                 }else{
                     $this->addErrorMessage("Error: cannot edit user.");
                 }
-                $this->redirect('users');
+                $this->redirect('admins');
             }
         }
 
@@ -44,7 +44,7 @@ class AdminsController extends BaseController
         $this->user = $this->model->getById($id);
         if(!$this->user){
             $this->addErrorMessage("Error: post does not exist. ");
-            $this->redirect("users");
+            $this->redirect("admins");
         }
     }
 

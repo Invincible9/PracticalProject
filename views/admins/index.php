@@ -3,7 +3,6 @@
 <h1 style="text-align: center"><?=htmlspecialchars($this->title)?></h1>
 
 <hr />
-
 <div class="container">
     <table class="table table-condensed">
         <thead>
@@ -13,6 +12,7 @@
                 <th>Full Name</th>
                 <th>IsAdmin</th>
                 <th>EDIT</th>
+                <th>DELETE</th>
             </tr>
         </thead>
 
@@ -24,6 +24,7 @@
                     <td><?=htmlspecialchars($user['full_name']) ?></td>
                     <td><?=htmlspecialchars($user['isAdmin']) ?></td>
                     <td><a href="<?=APP_ROOT?>/admins/edit/<?= $user['id']?>">[EDIT]</a></td>
+                    <td><a href="<?=APP_ROOT?>/admins/edit/<?= $user['id']?>">[DELETE]</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

@@ -5,7 +5,7 @@ class HomeModel extends BaseModel
     public function getLastPosts(int $maxCount = 5)
     {
         $statement = self::$db->query(
-            "SELECT posts.id, title, content, date, full_name " .
+            "SELECT posts.id, title, content, date, username " .
             "FROM posts LEFT JOIN users On posts.user_id = users.id " .
             "ORDER By date DESC LIMIT $maxCount");
         
@@ -15,7 +15,7 @@ class HomeModel extends BaseModel
     public function getPostById(int $id)
     {
         $statement = self::$db->prepare(
-            "SELECT posts.id, title, content, date, full_name, user_id " .
+            "SELECT posts.id, title, content, date, username, user_id " .
             "FROM posts LEFT JOIN users On posts.user_id = users.id " .
             "WHERE posts.id = ?");
         $statement->bind_param("i", $id);
@@ -24,5 +24,4 @@ class HomeModel extends BaseModel
         return $result;
         
     }
-
 }

@@ -144,11 +144,11 @@ class PostsController extends BaseController
             $date = $_POST['post_date'];
             $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
 
-            if(! preg_match($dateRegex, $date)){
+            if(!preg_match($dateRegex, $date)){
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['full_name'];
+            $username = $_POST['username'];
             $user_id = $this->model->getUserByUsername($username);
             if($user_id <= 0 || $user_id > 1000000){
                 $this->setValidationError("user_id", "Invalid author user ID!");
@@ -166,12 +166,12 @@ class PostsController extends BaseController
             }
             //HTTP GET
             //Show "confirm delete" form
-            $post = $this->model->getPostById($id);
-            if(!$post){
+            $this->post = $this->model->getPostById($id);
+            if(!$this->post){
                 $this->addErrorMessage("Error: post does not exist. ");
                 $this->redirect("posts");
             }
-            $this->post = $post;
+//            $this->post = $post;
         }
 
 

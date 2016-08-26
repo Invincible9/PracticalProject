@@ -2,6 +2,7 @@
 
 <h1 style="margin: 30px"><?=htmlspecialchars($this->title)?></h1>
 
+
 <form method="post">
 
     <div class="container">
@@ -23,7 +24,7 @@
 
         <div class="form-group">
             <label for="fullname">Author UserName:</label>
-            <input type="text" class="form-control" name="full_name" id="fullname" value="<?=htmlspecialchars($this->post['full_name'])?>" />
+            <input type="text" class="form-control" name="username" id="fullname" value="<?=htmlspecialchars($this->post['username'])?>" />
         </div>
 
         <div><button type="submit" class="btn btn-primary">Edit</button>
