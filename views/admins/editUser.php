@@ -7,11 +7,11 @@
     <div class="container">
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input type="text" class="form-control" name="username" id="username" value="<?=htmlspecialchars($this->user[0]['username'])?>" />
+                    <input type="text" class="form-control" name="username" id="username" disabled value="<?=htmlspecialchars($this->user[0]['username'])?>" />
                 </div>
                 <div class="form-group">
                     <label for="pwd">User Full Name:</label>
-                    <input type="text" class="form-control" name="full_name" id="pwd" value="<?=htmlspecialchars($this->user[0]['full_name'])?>" />
+                    <input type="text" class="form-control" name="full_name" id="pwd" disabled value="<?=htmlspecialchars($this->user[0]['full_name'])?>" />
                 </div>
 
                 <div class="checkbox">

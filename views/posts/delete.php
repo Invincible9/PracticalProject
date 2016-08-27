@@ -19,3 +19,4 @@
             <a href="<?=APP_ROOT?>/posts">[Cancel]</a>
         </div>
 </form>
+

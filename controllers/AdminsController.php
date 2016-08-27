@@ -14,7 +14,7 @@ class AdminsController extends BaseController
         $this->posts = $this->model->getAllPostsById($id);
     }
 
-    public function edit(int $id)
+    public function editUser(int $id)
     {
         if($this->isPost){
             //Edit the request post (update its fields)
@@ -47,6 +47,32 @@ class AdminsController extends BaseController
             $this->redirect("admins");
         }
     }
+
+
+    public function deleteUser(int $id){
+
+        if ($this->isPost){
+            //HTTP POST
+            //Delete the request post by id
+            if($this->model->deleteUser($id)){
+                $this->addInfoMessage("User deleted");
+            }else{
+                $this->addErrorMessage("Error: cannot delete user. ");
+            }
+            $this->redirect('admins');
+        }
+        else{
+            //HTTP GET
+            //Show "confirm delete" form
+            $this->user = $this->model->getById($id);
+            if(!$this->user){
+                $this->addErrorMessage("Error: post does not exist. ");
+                $this->redirect("posts");
+            }
+//            $this->post = $post;
+        }
+    }
+
 
     public function logout()
     {

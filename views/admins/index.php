@@ -23,8 +23,8 @@
                     <td><?=htmlspecialchars($user['username']) ?></td>
                     <td><?=htmlspecialchars($user['full_name']) ?></td>
                     <td><?=htmlspecialchars($user['isAdmin']) ?></td>
-                    <td><a href="<?=APP_ROOT?>/admins/edit/<?= $user['id']?>">[EDIT]</a></td>
-                    <td><a href="<?=APP_ROOT?>/admins/edit/<?= $user['id']?>">[DELETE]</a></td>
+                    <td><a href="<?=APP_ROOT?>/admins/editUser/<?= $user['id']?>">[EDIT]</a></td>
+                    <td><a href="<?=APP_ROOT?>/admins/deleteUser/<?= $user['id']?>">[DELETE]</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

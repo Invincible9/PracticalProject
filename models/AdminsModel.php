@@ -41,15 +41,25 @@ class AdminsModel extends BaseModel
         return $statement->affected_rows >= 0;
     }
 
-    public function delete(int $id, string $username, string $full_name, int $isAdmin) : bool
+    //??????
+    public function delete(int $id) : bool
     {
         $statement = self::$db->prepare(
-            "DELETE FROM users WHERE id = ?");
+            "DELETE FROM posts WHERE user_id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
+    public function deleteUser(int $id) : bool
+    {
+        $statement = self::$db->prepare(
+            "DELETE FROM users WHERE id = ?");
+        $statement->bind_param("i", $id);
+        $statement->execute();
+
+        return $statement->affected_rows == 1;
+    }
 
 
 }

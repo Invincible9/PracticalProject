@@ -20,5 +20,5 @@
 <?php endforeach; ?>
 </table>
 </div>
-<p><a href="<?=APP_ROOT?>/posts/create"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
+<p><a href="<?=APP_ROOT?>/posts/createAdminPost/"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
 </main>

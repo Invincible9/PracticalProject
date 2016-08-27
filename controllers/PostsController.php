@@ -148,14 +148,14 @@ class PostsController extends BaseController
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['username'];
-            $user_id = $this->model->getUserByUsername($username);
-            if($user_id <= 0 || $user_id > 1000000){
-                $this->setValidationError("user_id", "Invalid author user ID!");
-            }
+//            $username = $_POST['username'];
+//            $user_id = $this->model->getUserByUsername($username);
+//            if($user_id <= 0 || $user_id > 1000000){
+//                $this->setValidationError("user_id", "Invalid author user ID!");
+//            }
 
             if($this->formValid()){
-                if($this->model->edit($id, $title, $content, $date, $user_id)){
+                if($this->model->edit($id, $title, $content, $date)){
                     $this->addInfoMessage("Post edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit post.");
@@ -173,6 +173,52 @@ class PostsController extends BaseController
             }
 //            $this->post = $post;
         }
+
+
+    public function editAdminPost(int $id){
+        if($this->isPost){
+            //Edit the request post (update its fields)
+            $title = $_POST['post_title'];
+            if(strlen($title) < 1){
+                $this->setValidationError("post_title", "Title cannot be empty!");
+            }
+            $content = $_POST['post_content'];
+            if(strlen($content) < 1){
+                $this->setValidationError("post_content", "Content cannot be empty!");
+            }
+            $date = $_POST['post_date'];
+            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
+
+            if(! preg_match($dateRegex, $date)){
+                $this->setValidationError("post_date", "Invalid date!");
+            }
+
+            $username = $_POST['username'];
+            $user_id = $this->model->getUserByUsername($username);
+            if($user_id <= 0 || $user_id > 1000000){
+                $this->setValidationError("user_id", "Invalid author user ID!");
+            }
+
+            if($this->formValid()){
+                if($this->model->edit($id, $title, $content, $date, $user_id)){
+                    $this->addInfoMessage("Post edited");
+                }else{
+                    $this->addErrorMessage("Error: cannot edit post.");
+                }
+                $this->redirect('admins','myposts');
+            }
+
+        }
+        //HTTP GET
+        //Show "confirm delete" form
+        $post = $this->model->getPostById($id);
+        if(!$post){
+            $this->addErrorMessage("Error: post does not exist. ");
+            $this->redirect("admins","posts");
+        }
+        $this->post = $post;
+    }
+
 
 
     public function editUserPost(int $id){
@@ -193,7 +239,7 @@ class PostsController extends BaseController
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['full_name'];
+            $username = $_POST['username'];
             $user_id = $this->model->getUserByUsername($username);
             if($user_id <= 0 || $user_id > 1000000){
                 $this->setValidationError("user_id", "Invalid author user ID!");
@@ -220,49 +266,6 @@ class PostsController extends BaseController
     }
 
 
-    public function editAdminPost(int $id){
-        if($this->isPost){
-            //Edit the request post (update its fields)
-            $title = $_POST['post_title'];
-            if(strlen($title) < 1){
-                $this->setValidationError("post_title", "Title cannot be empty!");
-            }
-            $content = $_POST['post_content'];
-            if(strlen($content) < 1){
-                $this->setValidationError("post_content", "Content cannot be empty!");
-            }
-            $date = $_POST['post_date'];
-            $dateRegex = '/^\d{2,4}-\d{1,2}-\d{1,2}( \d{1,2}:\d{1,2}(:\d{1,2})?)?$/';
-
-            if(! preg_match($dateRegex, $date)){
-                $this->setValidationError("post_date", "Invalid date!");
-            }
-
-            $username = $_POST['full_name'];
-            $user_id = $this->model->getUserByUsername($username);
-            if($user_id <= 0 || $user_id > 1000000){
-                $this->setValidationError("user_id", "Invalid author user ID!");
-            }
-
-            if($this->formValid()){
-                if($this->model->edit($id, $title, $content, $date, $user_id)){
-                    $this->addInfoMessage("Post edited");
-                }else{
-                    $this->addErrorMessage("Error: cannot edit post.");
-                }
-                $this->redirect('admins','myposts');
-            }
-
-        }
-        //HTTP GET
-        //Show "confirm delete" form
-        $post = $this->model->getPostById($id);
-        if(!$post){
-            $this->addErrorMessage("Error: post does not exist. ");
-            $this->redirect("admins","posts");
-        }
-        $this->post = $post;
-    }
 
 
 

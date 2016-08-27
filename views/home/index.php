@@ -13,7 +13,13 @@
 </aside>
 
 <main>
+
+    <div class="container">
+        <table class="table table-condensed">
+            <tr>
+
     <?php foreach ($this->posts as $post) : ?>
+
      <h1><?= htmlspecialchars($post['title'])?></h1>
         <p>
             <i>Posted on</i>
@@ -24,7 +30,12 @@
 
      <p><?=$post['content']?></p>
 
+     <hr />
+
     <?php endforeach; ?>
+            </tr>
+            </table>
+        </div>
 
 </main>
 

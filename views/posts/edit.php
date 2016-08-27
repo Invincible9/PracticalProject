@@ -24,7 +24,7 @@
 
         <div class="form-group">
             <label for="fullname">Author UserName:</label>
-            <input type="text" class="form-control" name="username" id="fullname" value="<?=htmlspecialchars($this->post['username'])?>" />
+            <input type="text" class="form-control" name="username" id="fullname" disabled value="<?=htmlspecialchars($this->post['username'])?>" />
         </div>
 
         <div><button type="submit" class="btn btn-primary">Edit</button>
@@ -32,9 +32,5 @@
         </div>
 
     </div>
-
-
-
-
 
 </form>

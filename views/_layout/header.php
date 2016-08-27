@@ -47,6 +47,7 @@
                 <li><a href = "<?=APP_ROOT?>/admins/myposts" > MyPosts</a ></li >
                 <li><a href="<?=APP_ROOT?>/posts/createAdminPost" >Create Posts</a></li>
 
+
             <?php } else { ?>
                 <li><a href="<?=APP_ROOT?>/users/login">Login</a></li>
                 <li><a href="<?=APP_ROOT?>/users/register">Register</a></li>
