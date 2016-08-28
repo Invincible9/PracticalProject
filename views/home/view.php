@@ -1,17 +1,17 @@
-<?php $this->title = $this->post['title']; ?>
+<?php $this->title = $this->posts['title']; ?>
 
 <main>
 
     <div class="container">
         <table class="table table-condensed">
                 <tr>
-                <h1><?=htmlspecialchars($this->post['title'])?></h1>
+                <h1><?=htmlspecialchars($this->posts['title'])?></h1>
 
                 <p>
                     <i>Posted on</i>
-                    <?=htmlspecialchars($this->post['date'])?>
+                    <?=htmlspecialchars($this->posts['date'])?>
                     <i>by</i>
-                    <?=htmlspecialchars($this->post['username'])?>
+                    <?=htmlspecialchars($this->posts['username'])?>
                 </p>
 
                 <p><?=$this->post['content']?></p>

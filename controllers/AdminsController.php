@@ -19,18 +19,19 @@ class AdminsController extends BaseController
         if($this->isPost){
             //Edit the request post (update its fields)
             $username = $_POST['username'];
-            if(strlen($username) < 2){
-                $this->setValidationError("username", "Username cannot be empty!");
-            }
-            $full_name = $_POST['full_name'];
-            if(strlen($full_name) < 2){
-                $this->setValidationError("full_name", "FullName cannot be empty!");
-            }
+
+//            if(strlen($username) < 2){
+//                $this->setValidationError("username", "Username cannot be empty!");
+//            }
+//            $full_name = $_POST['full_name'];
+//            if(strlen($full_name) < 2){
+//                $this->setValidationError("full_name", "FullName cannot be empty!");
+//            }
 
             $check_isAdmin = isset($_POST['admin']) ? 1 : 0;
 
             if($this->formValid()){
-                if($this->model->edit($id, $username, $full_name, $check_isAdmin)){
+                if($this->model->edit($id, $check_isAdmin)){
                     $this->addInfoMessage("User edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit user.");
@@ -50,6 +51,9 @@ class AdminsController extends BaseController
 
 
     public function deleteUser(int $id){
+
+        $posts = $this->model->delete($id);
+
 
         if ($this->isPost){
             //HTTP POST

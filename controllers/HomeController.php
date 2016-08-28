@@ -2,17 +2,21 @@
 
 class HomeController extends BaseController
 {
-    function index() 
+    function indexLogedIn(){
+    $this->posts = $this->model->getAll();
+}
+
+    function index()
     {
 //        $this->addErrorMessage("some error");
 //        $this->addInfoMessage("info error");
 
         $posts = $this->model->getLastPosts(5);
-        $this->posts = array_slice($posts, 0 , 3);
+        $this->posts = $this->model->getAllPosts();
         $this->postsSideBar = $posts;
     }
 
-	function view(int $id) 
+	function view(int $id)
     {
         $post = $this->model->getPostById($id);
         if(!$post){

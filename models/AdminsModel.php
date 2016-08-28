@@ -31,11 +31,11 @@ class AdminsModel extends BaseModel
         return $result;
     }
 
-    public function edit(int $id, string $username, string $full_name, int $isAdmin) : bool
+    public function edit(int $id, int $isAdmin) : bool
     {
-        $statement = self::$db->prepare("UPDATE users SET username = ?, " .
-            "full_name = ?, isAdmin = ? WHERE id = ?");
-        $statement->bind_param("ssii", $username, $full_name, $isAdmin, $id);
+        $statement = self::$db->prepare("UPDATE users SET  " .
+            " isAdmin = ? WHERE id = ?");
+        $statement->bind_param("ii", $isAdmin, $id);
         $statement->execute();
 
         return $statement->affected_rows >= 0;

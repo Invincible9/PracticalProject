@@ -3,6 +3,10 @@
 class UsersController extends BaseController
 {
 
+//    public function allUsers(){
+//        $this->users = $this->model->getAllUsers();
+//    }
+
     public function myposts()
     {
         $id = $_SESSION['user_id'];

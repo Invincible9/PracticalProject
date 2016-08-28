@@ -21,11 +21,12 @@
     <?php foreach ($this->posts as $post) : ?>
 
      <h1><?= htmlspecialchars($post['title'])?></h1>
-        <p>
+        <p><u>
             <i>Posted on</i>
             <?= htmlspecialchars($post['date'])?>
             <i>by</i>
             <?= htmlspecialchars($post['username'])?>
+            </u>
         </p>
 
      <p><?=$post['content']?></p>
