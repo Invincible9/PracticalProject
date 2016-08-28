@@ -7,6 +7,7 @@ class HomeModel extends BaseModel
             "SELECT posts.id, title, content, date, username " .
             "FROM posts JOIN users On posts.user_id = users.id " .
             "ORDER By date DESC");
+
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 

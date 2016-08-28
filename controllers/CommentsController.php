@@ -1,6 +1,6 @@
 <?php
 
-class PostsController extends BaseController
+class CommentsController extends BaseController
 {
     function onInit(){
         $this->authorize();
@@ -11,44 +11,35 @@ class PostsController extends BaseController
         $this->posts = $this->model->getALL();
     }
 
-    function index1()
-    {
-        $this->posts = $this->model->getALLPosts();
-    }
-
-    function createUserPost(){
+    function createUserComment(){
         if($this->isPost){
-            $title = $_POST['post_title'];
-            if(strlen($title) < 1){
-                $this->setValidationError("post_title", "Title cannot be empty");
-            }
 
-            $content = $_POST['post_content'];
-            if(strlen($content) < 1){
-                $this->setValidationError("post_content", "Content cannot be empty");
+            $content = $_POST['comments_content'];
+            if(strlen($content) < 2){
+                $this->setValidationError("comments_content", "Content cannot be empty");
             }
 
             if($this->formValid()){
                 $userId = $_SESSION['user_id'];
-                if($this->model->create($title, $content, $userId)){
-                    $this->addInfoMessage("Post created");
-                    $this->redirect("users", "myposts");
+
+                if($this->model->createUserComment($content, $userId)){
+                    $this->addInfoMessage("Commment created");
+                    $this->redirect("users");
                 }else{
-                    $this->addErrorMessage("Error: cannot create post.");
+                    $this->addErrorMessage("Error: cannot create comment.");
                 }
             }
         }
     }
 
 
-    function createAdminPost(){
+    function createAdminComment(){
         if($this->isPost){
             $title = $_POST['post_title'];
             if(strlen($title) < 1){
                 $this->setValidationError("post_title", "Title cannot be empty");
             }
 
-            $postId = $_SESSION['id_post'];
             $content = $_POST['post_content'];
             if(strlen($content) < 1){
                 $this->setValidationError("post_content", "Content cannot be empty");
@@ -65,33 +56,6 @@ class PostsController extends BaseController
             }
         }
     }
-
-
-    function createUserComment(){
-        if($this->isPost){
-
-            $content = $_POST['comments_content'];
-
-            if(strlen($content) < 2){
-                $this->setValidationError("comments_content", "Content cannot be empty");
-            }
-
-            if($this->formValid()){
-                $userId = $_SESSION['user_id'];
-                if($this->model->createUserComment($content, 1, $userId)){
-                    $this->addInfoMessage("Commment created");
-                    $this->redirect("home");
-                }else{
-                    $this->addErrorMessage("Error: cannot create comment.");
-                }
-            }
-        }
-    }
-
-
-
-
-
 
     public function delete(int $id){
         if ($this->isPost){
@@ -187,10 +151,8 @@ class PostsController extends BaseController
 //                $this->setValidationError("user_id", "Invalid author user ID!");
 //            }
 
-
             if($this->formValid()){
                 if($this->model->edit($id, $title, $content, $date)){
-                    $_SESSION['id'] = $id;
                     $this->addInfoMessage("Post edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit post.");

@@ -2,17 +2,19 @@
 
 class HomeController extends BaseController
 {
-    function indexLogedIn(){
-    $this->posts = $this->model->getAll();
-}
+
+//    function indexLogedIn(){
+//    $this->posts = $this->model->getAll();
+//    }
 
     function index()
     {
 //        $this->addErrorMessage("some error");
 //        $this->addInfoMessage("info error");
 
-        $posts = $this->model->getLastPosts(5);
         $this->posts = $this->model->getAllPosts();
+
+        $posts = $this->model->getLastPosts(5);
         $this->postsSideBar = $posts;
     }
 
@@ -25,4 +27,5 @@ class HomeController extends BaseController
         }
         $this->post = $post;
     }
+
 }
