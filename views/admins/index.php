@@ -6,7 +6,7 @@
 <div class="container">
     <table class="table table-condensed">
         <thead>
-            <tr>
+            <th>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Full Name</th>
@@ -25,6 +25,7 @@
                     <td><?=htmlspecialchars($user['isAdmin']) ?></td>
                     <td><a href="<?=APP_ROOT?>/admins/editUser/<?= $user['id']?>">[EDIT]</a></td>
                     <td><a href="<?=APP_ROOT?>/admins/deleteUser/<?= $user['id']?>">[DELETE]</a></td>
+
                 </tr>
             <?php endforeach; ?>
         </tbody>

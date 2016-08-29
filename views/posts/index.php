@@ -9,6 +9,7 @@
                 <th>Author</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
+                <th>CREATE COMMENT</th>
             </tr>
             <?php foreach ($this->posts as $post) : ?>
                 <tr>
@@ -19,7 +20,7 @@
                     <td><?=htmlspecialchars($post['username']) ?></td>
                     <td><a href="<?=APP_ROOT?>/posts/edit/<?= htmlspecialchars($post['id'])?>">[EDIT]</a></td>
                     <td><a href="<?=APP_ROOT?>/posts/delete/<?= htmlspecialchars($post['id'])?>">[DELETE]</a></td>
-
+                    <td><a href="<?=APP_ROOT?>/posts/createUserComment/<?= htmlspecialchars($post['id'])?>">[CREATE COMMENT]</a></td>
                 </tr>
             <?php endforeach; ?>
         </table>

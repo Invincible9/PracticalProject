@@ -7,6 +7,7 @@
                 <th>Date</th>
                 <th>EDIT</th>
                 <th>DELETE</th>
+<!--                <th>SHOW COMMENTS</th>-->
             </tr>
             <?php foreach ($this->posts as $post) : ?>
     <tr>

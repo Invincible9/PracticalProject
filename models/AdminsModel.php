@@ -17,7 +17,7 @@ class AdminsModel extends BaseModel
         $statement->bind_param("i", $id);
         $statement->execute();
         $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
-        $_SESSION['result'] = $result;
+//        $_SESSION['result'] = $result;
         return $result;
     }
 

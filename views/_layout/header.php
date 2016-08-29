@@ -49,6 +49,7 @@
                     <li><a href = "<?=APP_ROOT?>/admins" > Users</a ></li >
                     <li><a href = "<?=APP_ROOT?>/admins/myposts" > MyPosts</a ></li >
                     <li><a href="<?=APP_ROOT?>/posts/createAdminPost" >Create Posts</a></li>
+<!--                    <li><a href="--><?//=APP_ROOT?><!--/comments/mycomments" >My Comments</a></li>-->
 
 
                 <?php } else { ?>

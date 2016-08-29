@@ -3,6 +3,17 @@
 class CommentsModel extends HomeModel
 {
 
+//    public function getPostId($id){
+//        $statement = self::$db->prepare(
+//            "SELECT comments.id, text, date, post_id FROM comments WHERE posts.id=?");
+////        $id = $_SESSION['post_id'];
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+//        $_SESSION['result'] = $result;
+//        return $result;
+//    }
+
     public function createUserComment(string $text,int $posts_id, int $author_id) : bool
     {
         $statement = self::$db->prepare(

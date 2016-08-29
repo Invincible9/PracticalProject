@@ -31,7 +31,7 @@
 
                      <p><?=$post['content']?></p>
                       <?php if($this->isLoggedIn)  {  ?>
-                         <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createUserComment/"><button>Add Comment</button></a></div></span>
+                         <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createUserComment/<?= $post['id']?>"><button>Add Comment</button></a></div></span>
                       <?php } ?>
                      <hr />
 

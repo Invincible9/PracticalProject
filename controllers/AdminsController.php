@@ -18,7 +18,7 @@ class AdminsController extends BaseController
     {
         if($this->isPost){
             //Edit the request post (update its fields)
-            $username = $_POST['username'];
+//            $username = $_POST['username'];
 
 //            if(strlen($username) < 2){
 //                $this->setValidationError("username", "Username cannot be empty!");

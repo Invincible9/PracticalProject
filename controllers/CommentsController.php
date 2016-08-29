@@ -6,6 +6,12 @@ class CommentsController extends BaseController
         $this->authorize();
     }
 
+//    public function mycomments()
+//    {
+////        $id = $_SESSION['post_id'];
+//        $this->comments = $this->model->getPostId($id);
+//    }
+
     function index()
     {
         $this->posts = $this->model->getALL();

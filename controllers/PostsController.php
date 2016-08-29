@@ -11,10 +11,10 @@ class PostsController extends BaseController
         $this->posts = $this->model->getALL();
     }
 
-    function index1()
-    {
-        $this->posts = $this->model->getALLPosts();
-    }
+//    function index1()
+//    {
+//        $this->posts = $this->model->getALLPosts();
+//    }
 
     function createUserPost(){
         if($this->isPost){
@@ -40,7 +40,6 @@ class PostsController extends BaseController
         }
     }
 
-
     function createAdminPost(){
         if($this->isPost){
             $title = $_POST['post_title'];
@@ -48,7 +47,7 @@ class PostsController extends BaseController
                 $this->setValidationError("post_title", "Title cannot be empty");
             }
 
-            $postId = $_SESSION['id_post'];
+//            $postId = $_SESSION['id_post'];
             $content = $_POST['post_content'];
             if(strlen($content) < 1){
                 $this->setValidationError("post_content", "Content cannot be empty");
@@ -66,7 +65,6 @@ class PostsController extends BaseController
         }
     }
 
-
     function createUserComment(){
         if($this->isPost){
 
@@ -78,6 +76,7 @@ class PostsController extends BaseController
 
             if($this->formValid()){
                 $userId = $_SESSION['user_id'];
+                $posts1 = $_SESSION['id'];
                 if($this->model->createUserComment($content, 1, $userId)){
                     $this->addInfoMessage("Commment created");
                     $this->redirect("home");
@@ -187,10 +186,11 @@ class PostsController extends BaseController
 //                $this->setValidationError("user_id", "Invalid author user ID!");
 //            }
 
+            $postId = $this->model->edit($id, $title, $content, $date);
 
             if($this->formValid()){
-                if($this->model->edit($id, $title, $content, $date)){
-                    $_SESSION['id'] = $id;
+                if($postId){
+                    $_SESSION['id'] = $postId;
                     $this->addInfoMessage("Post edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit post.");
