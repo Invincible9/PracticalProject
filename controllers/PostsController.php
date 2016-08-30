@@ -75,13 +75,15 @@ class PostsController extends BaseController
             }
 
             $author_id = $_SESSION['user_id'];
+
             $postId = $this->model->createAdminComment($content, $post_id, $author_id);
 
             if($this->formValid()){
                 if($postId){
 //                    $_SESSION['id'] = $postId;
                     $this->addInfoMessage("Comment created");
-                    $this->redirect("home");
+//                    $this->redirect("home", "view", $post_id);
+                    header("Location: " . APP_ROOT . '/home/view/' . $post_id);
                 }else{
                     $this->addErrorMessage("Error: cannot create comment.");
                 }
@@ -89,7 +91,6 @@ class PostsController extends BaseController
 
         }
  }
-
 
 
     function createUserComment($post_id){
@@ -108,9 +109,9 @@ class PostsController extends BaseController
             if($this->formValid()){
 
                 if($postId){
-
                     $this->addInfoMessage("Comment created");
-                    $this->redirect("home");
+//                    $this->redirect("home", "view");
+                    header("Location: " . APP_ROOT . '/home/view/' . $post_id);
                 }else{
                     $this->addErrorMessage("Error: cannot create comment.");
                 }

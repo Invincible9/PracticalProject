@@ -31,6 +31,8 @@
 
                      <p><?=$post['content']?></p>
 
+                <span style="color:RED; text-align: center; float: left"><a href="<?=APP_ROOT?>/home/view/<?=$post['id']?>"><button>View Comments</button></a></div></span>
+
                     <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                         <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createAdminComment/<?=$post['id']?>"><button>Add Comment</button></a></div></span>
                     <?php } else if($this->isLoggedIn && !$_SESSION['isAdmin']) {?>
@@ -38,23 +40,10 @@
                     <?php } else { ?>
 
                     <?php }  ?>
+
                      <hr />
 
                 <?php endforeach; ?>
-
-                <?php foreach ($this->comments as $comment) : ?>
-
-                    <p><u>
-                            <i>Posted on</i>
-                            <?= htmlspecialchars($comment['date'])?>
-                            <i>by</i>
-                            <?= htmlspecialchars($comment['author_name'])?>
-                        </u>
-                    </p>
-
-                    <p><?=$comment['text']?></p>
-                <?php endforeach; ?>
-
 
             </tr>
         </table>

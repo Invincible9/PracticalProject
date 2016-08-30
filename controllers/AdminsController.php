@@ -14,6 +14,12 @@ class AdminsController extends BaseController
         $this->posts = $this->model->getAllPostsById($id);
     }
 
+    public function mycomments()
+    {
+        $id = $_SESSION['user_id'];
+        $this->comments = $this->model->getAllCommentsById($id);
+    }
+
     public function editUser(int $id)
     {
         if($this->isPost){
@@ -32,7 +38,8 @@ class AdminsController extends BaseController
 
             if($this->formValid()){
                 if($this->model->edit($id, $check_isAdmin)){
-                    $this->addInfoMessage("User edited");
+                    $_SESSION['val'] = $check_isAdmin;
+                     $this->addInfoMessage("User edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit user.");
                 }

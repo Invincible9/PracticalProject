@@ -6,7 +6,7 @@
 <div class="container">
     <table class="table table-condensed">
         <thead>
-            <th>
+            <tr>
                 <th>ID</th>
                 <th>Username</th>
                 <th>Full Name</th>

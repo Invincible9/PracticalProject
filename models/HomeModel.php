@@ -2,6 +2,22 @@
 
 class HomeModel extends BaseModel
 {
+
+    function getAllCommentsById($id)
+    {
+        $statement = self::$db->prepare(
+            "SELECT text, posts.title, users.username ,comments.date FROM comments " .
+            "LEFT JOIN posts ON comments.post_id = posts.id " .
+            "LEFT JOIN users ON comments.author_id = users.id " .
+            "WHERE post_id = ?");
+//        $id = $_SESSION['user_id'];
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
     public function getAllPosts(){
         $statement = self::$db->query(
             "SELECT posts.id, title, content, date, username " .

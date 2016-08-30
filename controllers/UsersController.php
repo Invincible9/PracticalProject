@@ -7,6 +7,12 @@ class UsersController extends BaseController
 //        $this->users = $this->model->getAllUsers();
 //    }
 
+    public function mycomments()
+    {
+        $id = $_SESSION['user_id'];
+        $this->comments = $this->model->getAllCommentsById($id);
+    }
+
     public function myposts()
     {
         $id = $_SESSION['user_id'];

@@ -3,6 +3,12 @@
 class HomeController extends BaseController
 {
 
+//    public function view()
+//    {
+//        $id = $_SESSION['user_id'];
+//        $this->comments = $this->model->getAllCommentsById($id);
+//    }
+
 //    function indexLogedIn(){
 //    $this->posts = $this->model->getAll();
 //    }

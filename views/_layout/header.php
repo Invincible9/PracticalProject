@@ -44,13 +44,15 @@
                     <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
                     <li><a href="<?=APP_ROOT?>/users/myposts" >MyPosts</a></li>
                     <li><a href="<?=APP_ROOT?>/posts/createUserPost" >Create Posts</a></li>
+                    <li><a href="<?=APP_ROOT?>/users/mycomments" >My Comments</a></li>
+
 
                 <?php } else if ($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                     <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
                     <li><a href = "<?=APP_ROOT?>/admins" > Users</a ></li >
                     <li><a href = "<?=APP_ROOT?>/admins/myposts" > MyPosts</a ></li >
                     <li><a href="<?=APP_ROOT?>/posts/createAdminPost" >Create Posts</a></li>
-<!--                    <li><a href="--><?//=APP_ROOT?><!--/comments/mycomments" >My Comments</a></li>-->
+                    <li><a href="<?=APP_ROOT?>/admins/mycomments" >My Comments</a></li>
 
 
                 <?php } else { ?>

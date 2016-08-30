@@ -3,6 +3,22 @@
 class CommentsModel extends HomeModel
 {
 
+    function getAllCommentsById()
+    {
+        $statement = self::$db->query(
+            "SELECT * FROM comments " .
+            "JOIN posts ON comments.post_id = posts.id " .
+            "JOIN users ON posts.user_id = users.id " .
+            "WHERE user_id = ?;");
+        $id = $_SESSION['user_id'];
+        $statement->bind_param("i", $id);
+        $statement->execute();
+        $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
+
+        return $result;
+    }
+
+
 //    public function getPostId($id){
 //        $statement = self::$db->prepare(
 //            "SELECT comments.id, text, date, post_id FROM comments WHERE posts.id=?");

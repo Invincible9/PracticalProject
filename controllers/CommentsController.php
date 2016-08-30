@@ -6,11 +6,12 @@ class CommentsController extends BaseController
         $this->authorize();
     }
 
-//    public function mycomments()
-//    {
-////        $id = $_SESSION['post_id'];
-//        $this->comments = $this->model->getPostId($id);
-//    }
+    public function mycomments()
+    {
+        $id = $_SESSION['user_id'];
+        $this->comments = $this->model->getAllCommentsById($id);
+    }
+
 
     function index()
     {
@@ -56,6 +57,7 @@ class CommentsController extends BaseController
                 if($this->model->create($title, $content, $userId)){
                     $this->addInfoMessage("Post created");
                     $this->redirect("admins", "myposts");
+
                 }else{
                     $this->addErrorMessage("Error: cannot create post.");
                 }
