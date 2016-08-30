@@ -41,7 +41,7 @@
             <hr />
         <?php endforeach; ?>
 
-
+        <span style="color:RED; text-align: center; float: left"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
         <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
             <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createAdminComment/<?=$this->post['id']?>"><button>Add Comment</button></a></div></span>
              <?php  } else if($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
@@ -49,7 +49,7 @@
              <?php  } { ?>
 
              <?php }  ?>
-        <br>
+        <br /><br />
     </div>
 
 </main>

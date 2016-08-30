@@ -56,11 +56,33 @@ class AdminsController extends BaseController
         }
     }
 
+    public function deleteAdminComment(int $id){
+        if ($this->isPost){
+            //HTTP POST
+            //Delete the request post by id
+            if($this->model->deleteAdminComments($id)){
+                $this->addInfoMessage("Comment deleted");
+            }else{
+                $this->addErrorMessage("Error: cannot delete comment. ");
+            }
+            $this->redirect('admins', "comments");
+        }
+        else{
+            //HTTP GET
+            //Show "confirm delete" form
+            $this->comments = $_SESSION['commentID'];
+            if(!$this->comments){
+                $this->addErrorMessage("Error: comment does not exist. ");
+                $this->redirect("admins", "mycomments");
+            }
+//            $this->post = $post;
+        }
+    }
+
 
     public function deleteUser(int $id){
 
-        $posts = $this->model->delete($id);
-
+//        $posts = $this->model->delete($id);
 
         if ($this->isPost){
             //HTTP POST
@@ -77,8 +99,8 @@ class AdminsController extends BaseController
             //Show "confirm delete" form
             $this->user = $this->model->getById($id);
             if(!$this->user){
-                $this->addErrorMessage("Error: post does not exist. ");
-                $this->redirect("posts");
+                $this->addErrorMessage("Error: User does not exist. ");
+                $this->redirect("admins");
             }
 //            $this->post = $post;
         }

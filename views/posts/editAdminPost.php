@@ -21,10 +21,10 @@
             <input type="text" class="form-control" name="post_date" id="pwd" value="<?=htmlspecialchars($this->post['date'])?>" />
         </div>
 
-        <div class="form-group">
-            <label for="fullname">Author UserName:</label>
-            <input type="text" class="form-control" name="username" id="fullname" value="<?=htmlspecialchars($this->post['username'])?>" />
-        </div>
+<!--        <div class="form-group">-->
+<!--            <label for="fullname">Author UserName:</label>-->
+<!--            <input type="text" class="form-control" name="username" id="fullname" value="--><!--" />-->
+<!--        </div>-->
 
         <div><button type="submit" class="btn btn-primary">Edit</button>
             <a href="<?=APP_ROOT?>/admins/myposts/">[Cancel]</a>

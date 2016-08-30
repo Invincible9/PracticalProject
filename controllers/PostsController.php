@@ -83,7 +83,7 @@ class PostsController extends BaseController
 //                    $_SESSION['id'] = $postId;
                     $this->addInfoMessage("Comment created");
 //                    $this->redirect("home", "view", $post_id);
-                    header("Location: " . APP_ROOT . '/home/view/' . $post_id);
+                    $this->redirect(header("Location: " . APP_ROOT . '/home/view/' . $post_id));
                 }else{
                     $this->addErrorMessage("Error: cannot create comment.");
                 }
@@ -111,7 +111,7 @@ class PostsController extends BaseController
                 if($postId){
                     $this->addInfoMessage("Comment created");
 //                    $this->redirect("home", "view");
-                    header("Location: " . APP_ROOT . '/home/view/' . $post_id);
+                    $this->redirect(header("Location: " . APP_ROOT . '/home/view/' . $post_id));
                 }else{
                     $this->addErrorMessage("Error: cannot create comment.");
                 }
@@ -191,6 +191,31 @@ class PostsController extends BaseController
         }
     }
 
+    public function deleteAdminComment(int $id){
+        if ($this->isPost){
+            //HTTP POST
+            //Delete the request post by id
+            if($this->model->deleteAdminComments($id)){
+                $this->addInfoMessage("Comment deleted");
+            }else{
+                $this->addErrorMessage("Error: cannot delete comment. ");
+            }
+            $this->redirect('admins', "comments");
+        }
+        else{
+            //HTTP GET
+            //Show "confirm delete" form
+            $post = $this->model->getAllCommentsById($id);
+            if(!$post){
+                $this->addErrorMessage("Error: comment does not exist. ");
+                $this->redirect("admins", "mycomments");
+            }
+            $this->post = $post;
+        }
+    }
+
+
+
     public function edit(int $id){
         if($this->isPost){
             //Edit the request post (update its fields)
@@ -257,14 +282,14 @@ class PostsController extends BaseController
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['username'];
-            $user_id = $this->model->getUserByUsername($username);
-            if($user_id <= 0 || $user_id > 1000000){
-                $this->setValidationError("user_id", "Invalid author user ID!");
-            }
+//            $username = $_POST['username'];
+//            $user_id = $this->model->getUserByUsername($username);
+//            if($user_id <= 0 || $user_id > 1000000){
+//                $this->setValidationError("user_id", "Invalid author user ID!");
+//            }
 
             if($this->formValid()){
-                if($this->model->edit($id, $title, $content, $date, $user_id)){
+                if($this->model->edit($id, $title, $content, $date)){
                     $this->addInfoMessage("Post edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit post.");
@@ -303,14 +328,14 @@ class PostsController extends BaseController
                 $this->setValidationError("post_date", "Invalid date!");
             }
 
-            $username = $_POST['username'];
-            $user_id = $this->model->getUserByUsername($username);
-            if($user_id <= 0 || $user_id > 1000000){
-                $this->setValidationError("user_id", "Invalid author user ID!");
-            }
+//            $username = $_POST['username'];
+//            $user_id = $this->model->getUserByUsername($username);
+//            if($user_id <= 0 || $user_id > 1000000){
+//                $this->setValidationError("user_id", "Invalid author user ID!");
+//            }
 
             if($this->formValid()){
-                if($this->model->edit($id, $title, $content, $date, $user_id)){
+                if($this->model->edit($id, $title, $content, $date)){
                     $this->addInfoMessage("Post edited");
                 }else{
                     $this->addErrorMessage("Error: cannot edit post.");

@@ -10,6 +10,7 @@ class CommentsController extends BaseController
     {
         $id = $_SESSION['user_id'];
         $this->comments = $this->model->getAllCommentsById($id);
+
     }
 
 

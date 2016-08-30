@@ -13,8 +13,6 @@ ul.topnav {
     margin-left: 100px;
     margin-right: 100px; margin-left: 100px;
     margin-right: 100px;
-
-
 }
 
 /*ul.topnav li img{*/
@@ -249,12 +247,13 @@ hr{
 }
 
 body>footer {
-    background: url(../content/images/templatemo_footer_bg.jpg) repeat-y;
+    /*background: url(../content/images/templatemo_footer_bg.jpg) repeat-y;*/
     max-width: 100%;
     padding: 5px;
     margin: 10px 0;
     text-align: center;
-    text-decoration-color: white;
+    text-decoration-color: black;
+
 }
 
 .createNewPost{

@@ -78,6 +78,30 @@ class UsersController extends BaseController
         }
     }
 
+    public function deleteUserComment(int $id){
+        if ($this->isPost){
+            //HTTP POST
+            //Delete the request post by id
+            if($this->model->deleteUserComments($id)){
+                $this->addInfoMessage("Comment deleted");
+            }else{
+                $this->addErrorMessage("Error: cannot delete comment. ");
+            }
+            $this->redirect('admins', "comments");
+        }
+        else{
+            //HTTP GET
+            //Show "confirm delete" form
+            $this->comments = $_SESSION['commentID'];
+            if(!$this->comments){
+                $this->addErrorMessage("Error: comment does not exist. ");
+                $this->redirect("admins", "mycomments");
+            }
+//            $this->post = $post;
+        }
+    }
+
+
     public function logout()
     {
         session_destroy();

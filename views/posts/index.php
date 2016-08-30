@@ -38,5 +38,6 @@
             <?php endforeach; ?>
         </table>
     </div>
-    <p><a href="<?=APP_ROOT?>/posts/createAdminPost/<?= htmlspecialchars($post['id'])?>"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
+    <span style="color:RED; text-align: center; float: left; margin-left: 40px"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
+    <p style="float: right; margin-right: 40px"><a href="<?=APP_ROOT?>/posts/createAdminPost/<?= htmlspecialchars($post['id'])?>"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
 </main>

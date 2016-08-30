@@ -30,4 +30,7 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <span style="color:RED; text-align: center; float: left;"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
+    <br /><br />
 </div>

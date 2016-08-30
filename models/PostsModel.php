@@ -49,6 +49,7 @@ class PostsModel extends HomeModel
             "INSERT INTO comments(text, post_id, author_id) VALUES(?, ?, ?)");
         $statement->bind_param("sii", $text, $posts_id, $author_id);
         $statement->execute();
+//        $_SESSION['commentID'] = $posts_id;
         return $statement->affected_rows == 1;
     }
 
@@ -61,7 +62,14 @@ class PostsModel extends HomeModel
         return $statement->affected_rows == 1;
     }
 
-
+//    public function deleteAdminComments(int $id) : bool
+//    {
+//        $statement = self::$db->prepare(
+//            "DELETE FROM comments WHERE comments.id = ?");
+//        $statement->bind_param("i", $id);
+//        $statement->execute();
+//        return $statement->affected_rows == 1;
+//    }
 
     public function delete(int $id) : bool
     {
