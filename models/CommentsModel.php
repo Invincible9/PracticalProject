@@ -14,6 +14,17 @@ class CommentsModel extends HomeModel
 //        return $result;
 //    }
 
+    public function createAdminComment(string $text,int $posts_id, int $author_id) : bool
+    {
+        $statement = self::$db->prepare(
+            "INSERT INTO comments(text, post_id, author_id) VALUES(?, ?)");
+        $posts_id = 1;
+        $statement->bind_param("sii", $text, $posts_id, $author_id);
+        $statement->execute();
+        return $statement->affected_rows == 1;
+    }
+
+
     public function createUserComment(string $text,int $posts_id, int $author_id) : bool
     {
         $statement = self::$db->prepare(

@@ -41,6 +41,7 @@
                 <li><a href="<?=APP_ROOT?>/">Home</a></li>
 
                 <?php if ($this->isLoggedIn && (!$_SESSION['isAdmin'])) { ?>
+                    <li><a href = "<?=APP_ROOT?>/posts" > Posts</a ></li >
                     <li><a href="<?=APP_ROOT?>/users/myposts" >MyPosts</a></li>
                     <li><a href="<?=APP_ROOT?>/posts/createUserPost" >Create Posts</a></li>
 

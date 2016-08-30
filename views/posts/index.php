@@ -7,9 +7,13 @@
                 <th>Content</th>
                 <th>Date</th>
                 <th>Author</th>
+                <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                 <th>EDIT</th>
                 <th>DELETE</th>
                 <th>CREATE COMMENT</th>
+                <?php } else { ?>
+                    <th>CREATE COMMENT</th>
+                <?php }  ?>
             </tr>
             <?php foreach ($this->posts as $post) : ?>
                 <tr>
@@ -18,9 +22,18 @@
                     <td><?=cutLongText($post['content']) ?></td>
                     <td><?=htmlspecialchars($post['date']) ?></td>
                     <td><?=htmlspecialchars($post['username']) ?></td>
+
+                    <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
                     <td><a href="<?=APP_ROOT?>/posts/edit/<?= htmlspecialchars($post['id'])?>">[EDIT]</a></td>
                     <td><a href="<?=APP_ROOT?>/posts/delete/<?= htmlspecialchars($post['id'])?>">[DELETE]</a></td>
-                    <td><a href="<?=APP_ROOT?>/posts/createUserComment/<?= htmlspecialchars($post['id'])?>">[CREATE COMMENT]</a></td>
+                    <?php }  ?>
+
+                    <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
+                    <td><a href="<?=APP_ROOT?>/posts/createAdminComment/<?= htmlspecialchars($post['id'])?>">[CREATE COMMENT]</a></td>
+                    <?php } else  {?>
+                        <td><a href="<?=APP_ROOT?>/posts/createUserComment/<?= htmlspecialchars($post['id'])?>">[CREATE COMMENT]</a></td>
+                    <?php }  ?>
+
                 </tr>
             <?php endforeach; ?>
         </table>

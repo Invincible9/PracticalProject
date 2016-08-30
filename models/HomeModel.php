@@ -29,7 +29,10 @@ class HomeModel extends BaseModel
             "WHERE posts.id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
+//        $_SESSION['postId'] = $id;
+
         $result = $statement->get_result()->fetch_assoc();
+
         return $result;
     }
 

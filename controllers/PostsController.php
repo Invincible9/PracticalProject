@@ -47,7 +47,6 @@ class PostsController extends BaseController
                 $this->setValidationError("post_title", "Title cannot be empty");
             }
 
-//            $postId = $_SESSION['id_post'];
             $content = $_POST['post_content'];
             if(strlen($content) < 1){
                 $this->setValidationError("post_content", "Content cannot be empty");
@@ -65,7 +64,8 @@ class PostsController extends BaseController
         }
     }
 
-    function createUserComment(){
+
+    function createAdminComment($post_id){
         if($this->isPost){
 
             $content = $_POST['comments_content'];
@@ -74,22 +74,50 @@ class PostsController extends BaseController
                 $this->setValidationError("comments_content", "Content cannot be empty");
             }
 
+            $author_id = $_SESSION['user_id'];
+            $postId = $this->model->createAdminComment($content, $post_id, $author_id);
+
             if($this->formValid()){
-                $userId = $_SESSION['user_id'];
-                $posts1 = $_SESSION['id'];
-                if($this->model->createUserComment($content, 1, $userId)){
-                    $this->addInfoMessage("Commment created");
+                if($postId){
+//                    $_SESSION['id'] = $postId;
+                    $this->addInfoMessage("Comment created");
                     $this->redirect("home");
                 }else{
                     $this->addErrorMessage("Error: cannot create comment.");
                 }
             }
+
+        }
+ }
+
+
+
+    function createUserComment($post_id){
+        if($this->isPost){
+
+            $content = $_POST['comments_content'];
+
+            if(strlen($content) < 2){
+                $this->setValidationError("comments_content", "Content cannot be empty");
+            }
+
+            $author_id = $_SESSION['user_id'];
+
+            $postId = $this->model->createUserComment($content, $post_id, $author_id);
+
+            if($this->formValid()){
+
+                if($postId){
+
+                    $this->addInfoMessage("Comment created");
+                    $this->redirect("home");
+                }else{
+                    $this->addErrorMessage("Error: cannot create comment.");
+                }
+            }
+
         }
     }
-
-
-
-
 
 
     public function delete(int $id){

@@ -21,10 +21,12 @@ class HomeController extends BaseController
 	function view(int $id)
     {
         $post = $this->model->getPostById($id);
+        $_SESSION['postId'] = $id;
         if(!$post){
             $this->addErrorMessage("Error: invalid post id.");
             $this->redirect("");
         }
+
         $this->post = $post;
     }
 

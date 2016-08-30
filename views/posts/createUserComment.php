@@ -2,6 +2,7 @@
 
 <h1 style="margin: 30px"><?=htmlspecialchars($this->title)?></h1>
 
+
 <form method="post">
 
     <div class="container">

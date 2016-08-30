@@ -48,15 +48,4 @@ class UsersModel extends BaseModel
             return false;
     }
 
-//    function getAllUsers(){
-////        $username = $_SESSION['username'];
-//        $statement = self::$db->query("SELECT id, username, full_name FROM users");
-//
-//        $_SESSION['result2'] = $statement;
-//        return $statement->fetch_all(MYSQLI_ASSOC);
-//    }
-
-
-
-
 }

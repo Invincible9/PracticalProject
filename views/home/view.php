@@ -21,12 +21,13 @@
             </tr>
         </table>
 
-        <?php if($this->isLoggedIn)  {  ?>
-        <table class="table table-condensed">
-            <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createUserComment/"><button>Add Comment</button></a></div></span>
+        <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
+            <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createAdminComment/<?=$this->post['id']?>"><button>Add Comment</button></a></div></span>
+             <?php  } else if($this->isLoggedIn && !$_SESSION['isAdmin']) { ?>
+             <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createUserComment/<?=$this->post['id']?>"><button>Add Comment</button></a></div></span>
+             <?php  } { ?>
 
-        </table>
-        <?php } ?>
+             <?php }  ?>
 
     </div>
 
