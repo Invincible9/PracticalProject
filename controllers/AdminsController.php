@@ -65,17 +65,17 @@ class AdminsController extends BaseController
             }else{
                 $this->addErrorMessage("Error: cannot delete comment. ");
             }
-            $this->redirect('admins', "comments");
+            $this->redirect('admins', "mycomments");
         }
         else{
             //HTTP GET
             //Show "confirm delete" form
-            $this->comments = $_SESSION['commentID'];
+            $this->comments = $this->model->getAllCommentsById($_SESSION['user_id']);
             if(!$this->comments){
                 $this->addErrorMessage("Error: comment does not exist. ");
                 $this->redirect("admins", "mycomments");
             }
-//            $this->post = $post;
+//            $this->comment = $comment;
         }
     }
 

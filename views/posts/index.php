@@ -18,8 +18,8 @@
             <?php foreach ($this->posts as $post) : ?>
                 <tr>
                     <td><?=htmlspecialchars($post['id']) ?></td>
-                    <td><?=htmlspecialchars($post['title']) ?></td>
-                    <td><?=cutLongText($post['content']) ?></td>
+                    <td><?=cutLongText2($post['title']) ?></td>
+                    <td><?=cutLongText2($post['content']) ?></td>
                     <td><?=htmlspecialchars($post['date']) ?></td>
                     <td><?=htmlspecialchars($post['username']) ?></td>
 

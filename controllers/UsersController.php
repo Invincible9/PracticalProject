@@ -50,17 +50,21 @@ class UsersController extends BaseController
             $password_confirm = $_POST['password_confirm'];
             $full_name = $_POST['full_name'];
 
-            if (strlen($username) <= 1) {
+            if (strlen($username) <= 1 || strlen($username) >= 20) {
                 $this->setValidationError("username", "Username invalid");
             }
 
-            if (strlen($password) <= 1) {
+            if (strlen($password) <= 1 || strlen($password) >= 30) {
                 $this->setValidationError("password", "Password is too short");
             }
 
             if ($password != $password_confirm) {
                 $this->setValidationError("password_confirm", "Password do not match");
                 return;
+            }
+
+            if (strlen($full_name) <= 1 || strlen($full_name) >= 50) {
+                $this->setValidationError("password", "Password is too short");
             }
 
             if ($this->formValid()) {
@@ -82,22 +86,24 @@ class UsersController extends BaseController
         if ($this->isPost){
             //HTTP POST
             //Delete the request post by id
+
             if($this->model->deleteUserComments($id)){
                 $this->addInfoMessage("Comment deleted");
             }else{
                 $this->addErrorMessage("Error: cannot delete comment. ");
             }
-            $this->redirect('admins', "comments");
+            $this->redirect('users', "mycomments");
         }
         else{
             //HTTP GET
             //Show "confirm delete" form
-            $this->comments = $_SESSION['commentID'];
+
+            $this->comments = $this->model->getAllCommentsById($_SESSION['user_id']);
             if(!$this->comments){
                 $this->addErrorMessage("Error: comment does not exist. ");
-                $this->redirect("admins", "mycomments");
+                $this->redirect("users", "mycomments");
             }
-//            $this->post = $post;
+//            $this->comment = $comment;
         }
     }
 

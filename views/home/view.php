@@ -6,7 +6,7 @@
 
         <table class="table table-condensed">
             <tr>
-                <h1><?=htmlspecialchars($this->post['title'])?></h1>
+                <h1><?=cutLongText1($this->post['title'])?></h1>
 
                 <p>
                     <u>
@@ -17,7 +17,7 @@
                     </u>
                 </p>
 
-                <p><?=$this->post['content']?></p>
+                <p><?=cutLongText1($this->post['content'])?></p>
             </tr>
         </table>
 
@@ -36,11 +36,11 @@
                 </u>
             </p>
 
-            <p><?=$comment['text']?></p>
+            <p><?=cutLongText1($comment['text'])?></p>
 
             <hr />
         <?php endforeach; ?>
-
+        <br />
         <span style="color:RED; text-align: center; float: left"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
         <?php if($this->isLoggedIn && $_SESSION['isAdmin']) { ?>
             <span style="color:RED; text-align: center; float: right"><a href="<?=APP_ROOT?>/posts/createAdminComment/<?=$this->post['id']?>"><button>Add Comment</button></a></div></span>

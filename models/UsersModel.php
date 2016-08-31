@@ -6,23 +6,23 @@ class UsersModel extends BaseModel
     public function deleteUserComments(int $id) : bool
     {
         $statement = self::$db->prepare(
-            "DELETE FROM comments WHERE comments.id = ?");
+            "DELETE FROM comments WHERE id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
         return $statement->affected_rows == 1;
     }
 
-    function getAllCommentsById($id)
+    function getAllCommentsById()
     {
         $statement = self::$db->prepare(
-            "SELECT comments.id, text, posts.title, users.username, comments.date FROM comments " .
+            "SELECT comments.id, comments.text, posts.title, users.username, comments.date FROM comments " .
             "LEFT JOIN posts ON comments.post_id = posts.id " .
-            "LEFT JOIN users ON posts.user_id = users.id " .
-            "WHERE author_id = ?");
-//        $id = $_SESSION['user_id'];
+            "LEFT JOIN users ON comments.author_id= users.id " .
+            "WHERE comments.author_id = ?");
+        $id = $_SESSION['user_id'];
         $statement->bind_param("i", $id);
         $statement->execute();
-        $_SESSION['commentID'] = $id;
+//        $_SESSION['commentID'] = $id;
         $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return $result;

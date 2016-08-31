@@ -13,10 +13,10 @@
 
             <?php foreach ($this->comments as $comment) : ?>
                 <tr>
-                    <td><?=cutLongText($comment['text']) ?></td>
-                    <td><?=cutLongText($comment['title']) ?></td>
-                    <td><?=cutLongText($comment['username']) ?></td>
-                    <td><?=htmlspecialchars($comment['date']) ?></td>
+                    <td><?=cutLongText2($comment['text']) ?></td>
+                    <td><?=cutLongText2($comment['title']) ?></td>
+                    <td><?=htmlspecialchars($comment['username']) ?></td>
+                    <td><?=cutLongText2($comment['date']) ?></td>
 
                     <td><a href="<?=APP_ROOT?>/users/deleteUserComment/<?= htmlspecialchars($comment['id'])?>">[DELETE]</a></td>
                 </tr>

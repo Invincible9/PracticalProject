@@ -6,13 +6,14 @@ class HomeModel extends BaseModel
     function getAllCommentsById($id)
     {
         $statement = self::$db->prepare(
-            "SELECT text, posts.title, users.username ,comments.date FROM comments " .
+            "SELECT comments.text, posts.title, users.username ,comments.date FROM comments " .
             "LEFT JOIN posts ON comments.post_id = posts.id " .
             "LEFT JOIN users ON comments.author_id = users.id " .
             "WHERE post_id = ?");
 //        $id = $_SESSION['user_id'];
         $statement->bind_param("i", $id);
         $statement->execute();
+//        $_SESSION['postID'] = $id;
         $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return $result;
@@ -33,7 +34,7 @@ class HomeModel extends BaseModel
             "SELECT posts.id, title, content, date, username " .
             "FROM posts LEFT JOIN users On posts.user_id = users.id " .
             "ORDER By date DESC LIMIT $maxCount");
-        
+
         return $statement->fetch_all(MYSQLI_ASSOC);
     }
 

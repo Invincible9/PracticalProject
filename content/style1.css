@@ -239,9 +239,9 @@ body>main:after {
 }
 
 hr{
-    width: 95%;
+    width: 100%;
     size: 3px;
-    margin: 10px;
+    margin: 0;
     padding: 10px;
 
 }

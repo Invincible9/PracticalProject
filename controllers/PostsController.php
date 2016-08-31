@@ -215,7 +215,6 @@ class PostsController extends BaseController
     }
 
 
-
     public function edit(int $id){
         if($this->isPost){
             //Edit the request post (update its fields)
@@ -251,7 +250,6 @@ class PostsController extends BaseController
                 }
                 $this->redirect('posts');
                 }
-
             }
             //HTTP GET
             //Show "confirm delete" form
@@ -309,7 +307,6 @@ class PostsController extends BaseController
     }
 
 
-
     public function editUserPost(int $id){
         if($this->isPost){
             //Edit the request post (update its fields)
@@ -353,10 +350,4 @@ class PostsController extends BaseController
         }
         $this->post = $post;
     }
-
-
-
-
-
-
 }

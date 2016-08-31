@@ -10,8 +10,8 @@
             </tr>
             <?php foreach ($this->posts as $post) : ?>
     <tr>
-        <td><?=htmlspecialchars($post['title']) ?></td>
-        <td><?=cutLongText($post['content']) ?></td>
+        <td><?=cutLongText3($post['title']) ?></td>
+        <td><?=cutLongText3($post['content']) ?></td>
         <td><?=htmlspecialchars($post['date']) ?></td>
 
         <td><a href="<?=APP_ROOT?>/posts/editUserPost/<?= htmlspecialchars($post['id'])?>">[EDIT]</a></td>

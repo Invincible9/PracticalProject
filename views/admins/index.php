@@ -1,6 +1,3 @@
-<?php $this->title = 'Welcome to My Blog'; ?>
-
-<h1 style="text-align: center"><?=htmlspecialchars($this->title)?></h1>
 
 <hr />
 <div class="container">

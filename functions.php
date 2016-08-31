@@ -93,3 +93,39 @@ function cutLongText(string $text, int $maxSize=200, bool $htmlEscape = true) : 
         $text = htmlspecialchars($text);
     return $text . $append;
 }
+
+function cutLongText1(string $text, int $maxSize=130, bool $htmlEscape = true) : string
+{
+    $append = '';
+    if (strlen($text) > $maxSize) {
+        $text = substr($text, 0, $maxSize);
+        $append = '&hellip;';
+    }
+    if ($htmlEscape)
+        $text = htmlspecialchars($text);
+    return $text . $append;
+}
+
+function cutLongText2(string $text, int $maxSize=50, bool $htmlEscape = true) : string
+{
+    $append = '';
+    if (strlen($text) > $maxSize) {
+        $text = substr($text, 0, $maxSize);
+        $append = '&hellip;';
+    }
+    if ($htmlEscape)
+        $text = htmlspecialchars($text);
+    return $text . $append;
+}
+
+function cutLongText3(string $text, int $maxSize=30, bool $htmlEscape = true) : string
+{
+    $append = '';
+    if (strlen($text) > $maxSize) {
+        $text = substr($text, 0, $maxSize);
+        $append = '&hellip;';
+    }
+    if ($htmlEscape)
+        $text = htmlspecialchars($text);
+    return $text . $append;
+}
