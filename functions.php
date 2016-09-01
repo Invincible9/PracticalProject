@@ -129,3 +129,15 @@ function cutLongText3(string $text, int $maxSize=30, bool $htmlEscape = true) : 
         $text = htmlspecialchars($text);
     return $text . $append;
 }
+
+function cutLongText4(string $text, int $maxSize=20, bool $htmlEscape = true) : string
+{
+    $append = '';
+    if (strlen($text) > $maxSize) {
+        $text = substr($text, 0, $maxSize);
+        $append = '&hellip;';
+    }
+    if ($htmlEscape)
+        $text = htmlspecialchars($text);
+    return $text . $append;
+}

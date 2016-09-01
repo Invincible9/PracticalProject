@@ -74,4 +74,16 @@ class UsersModel extends BaseModel
             return false;
     }
 
+//    public function editPass(int $id, string $title, string $content,
+//                         string $date) : bool
+//    {
+//        $password_hash = password_hash($password, PASSWORD_DEFAULT);
+//        $statement = self::$db->prepare("UPDATE posts SET title = ?, " .
+//            "content = ?, date = ? WHERE id = ?");
+//        $statement->bind_param("sssi", $title, $content, $date, $id);
+//        $statement->execute();
+//        return $statement->affected_rows >= 0;
+//    }
+
+
 }

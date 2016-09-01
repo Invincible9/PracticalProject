@@ -103,6 +103,7 @@ ul.topnav li.icon {display: none;}
 .form-group{
     width: 350px
 }
+
 @media only screen and (max-width: 1024px){
     .form-group{width: 350px}
     .btn-primary{width: 150px}

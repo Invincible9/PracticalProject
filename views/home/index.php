@@ -29,7 +29,7 @@
                             </u>
                         </p>
 
-                     <p><?=cutLongText1($post['content'])?></p>
+                     <p><?=htmlspecialchars($post['content'])?></p>
 
                 <span style="color:RED; text-align: center; float: left"><a href="<?=APP_ROOT?>/home/view/<?=$post['id']?>"><button>View Comments</button></a></div></span>
 

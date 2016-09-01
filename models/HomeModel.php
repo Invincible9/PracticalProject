@@ -9,7 +9,7 @@ class HomeModel extends BaseModel
             "SELECT comments.text, posts.title, users.username ,comments.date FROM comments " .
             "LEFT JOIN posts ON comments.post_id = posts.id " .
             "LEFT JOIN users ON comments.author_id = users.id " .
-            "WHERE post_id = ?");
+            "WHERE comments.post_id = ?");
 //        $id = $_SESSION['user_id'];
         $statement->bind_param("i", $id);
         $statement->execute();

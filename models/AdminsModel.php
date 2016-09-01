@@ -22,7 +22,7 @@ class AdminsModel extends BaseModel
         $id = $_SESSION['user_id'];
         $statement->bind_param("i", $id);
         $statement->execute();
-        $_SESSION['commentID'] = $id;
+//        $_SESSION['commentID'] = $id;
         $result = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
         return $result;
@@ -80,10 +80,9 @@ class AdminsModel extends BaseModel
     public function deleteUser(int $id) : bool
     {
         $statement = self::$db->prepare(
-            "DELETE FROM users WHERE id = ?");
+            "DELETE FROM users WHERE users.id = ?");
         $statement->bind_param("i", $id);
         $statement->execute();
-
         return $statement->affected_rows == 1;
     }
 

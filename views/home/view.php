@@ -6,7 +6,7 @@
 
         <table class="table table-condensed">
             <tr>
-                <h1><?=cutLongText1($this->post['title'])?></h1>
+                <h1><?=htmlspecialchars($this->post['title'])?></h1>
 
                 <p>
                     <u>
@@ -17,7 +17,7 @@
                     </u>
                 </p>
 
-                <p><?=cutLongText1($this->post['content'])?></p>
+                <p><?=htmlspecialchars($this->post['content'])?></p>
             </tr>
         </table>
 
@@ -36,7 +36,7 @@
                 </u>
             </p>
 
-            <p><?=cutLongText1($comment['text'])?></p>
+            <p><?= cutLongText1($comment['text'])?></p>
 
             <hr />
         <?php endforeach; ?>

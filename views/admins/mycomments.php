@@ -25,5 +25,5 @@
 
         </table>
     </div>
-    <span style="color:RED; text-align: center; float: left; margin-left: 50px"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
+    <span style="color:RED; text-align: center; float: left; margin-left: 110px"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
 </main>

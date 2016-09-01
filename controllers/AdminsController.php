@@ -82,11 +82,12 @@ class AdminsController extends BaseController
 
     public function deleteUser(int $id){
 
-//        $posts = $this->model->delete($id);
+//           $posts = $this->model->delete($id);
 
         if ($this->isPost){
             //HTTP POST
             //Delete the request post by id
+//            $id = $_SESSION['user_id'];
             if($this->model->deleteUser($id)){
                 $this->addInfoMessage("User deleted");
             }else{

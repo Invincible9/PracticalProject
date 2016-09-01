@@ -20,6 +20,6 @@
 <?php endforeach; ?>
 </table>
 </div>
-    <span style="color:RED; text-align: center; float: left; margin-left: 50px"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
-<p style="float: right; margin-right: 50px"><a href="<?=APP_ROOT?>/posts/createUserPost"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
+    <span style="color:RED; text-align: center; float: left; margin-left: 110px"><a href="<?=APP_ROOT?>/"><button>Back</button></a></span>
+<p style="float: right; margin-right: 110px"><a href="<?=APP_ROOT?>/posts/createUserPost"><button type="button" class="createNewPost">CREATE NEW POST</button></a></p>
 </main>

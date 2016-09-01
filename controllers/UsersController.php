@@ -54,7 +54,7 @@ class UsersController extends BaseController
                 $this->setValidationError("username", "Username invalid");
             }
 
-            if (strlen($password) <= 1 || strlen($password) >= 30) {
+            if (strlen($password) <= 1) {
                 $this->setValidationError("password", "Password is too short");
             }
 
@@ -63,9 +63,9 @@ class UsersController extends BaseController
                 return;
             }
 
-            if (strlen($full_name) <= 1 || strlen($full_name) >= 50) {
-                $this->setValidationError("password", "Password is too short");
-            }
+//            if (strlen($full_name) <= 1 || strlen($full_name) >= 50) {
+//                $this->setValidationError("password", "Password is too short");
+//            }
 
             if ($this->formValid()) {
                 $userId = $this->model->register($username, $password, $full_name);
