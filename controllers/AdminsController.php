@@ -2,6 +2,11 @@
 
 class AdminsController extends BaseController
 {
+
+    function onInit(){
+        $this->authorize();
+    }
+
     public function index()
     {
         $this->authorize();
